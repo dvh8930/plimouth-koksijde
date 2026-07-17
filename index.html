@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Zonnig appartement met zeezicht te Koksijde</title>
+
+<meta name="description" content="Zonnig appartement met zeezicht te Koksijde.">
+
+<style>
+
+:root{
+    --ocean:#0b6ea8;
+    --ocean-dark:#084c74;
+    --sand:#f4ead7;
+    --white:#ffffff;
+    --dark:#2d3748;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    color:var(--dark);
+    line-height:1.7;
+}
+
+/* NAVIGATION */
+
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.95);
+    backdrop-filter:blur(8px);
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+nav{
+    max-width:1200px;
+    margin:auto;
+    padding:15px;
+}
+
+nav ul{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    list-style:none;
+    gap:20px;
+}
+
+nav a{
+    text-decoration:none;
+    color:var(--ocean-dark);
+    font-weight:600;
+}
+
+/* HERO */
+
+.hero{
+    height:100vh;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.35),
+        rgba(0,0,0,.35)
+    ),
+    url('images/hero.jpg');
+
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.hero-content{
+    color:white;
+    max-width:900px;
+    padding:30px;
+}
+
+.hero h1{
+    font-size:4rem;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:1.3rem;
+    margin-bottom:30px;
+}
+
+.btn{
+    display:inline-block;
+    background:var(--ocean);
+    color:white;
+    text-decoration:none;
+    padding:14px 25px;
+    border-radius:6px;
+    margin:5px;
+}
+
+.btn:hover{
+    background:var(--ocean-dark);
+}
+
+section{
+    max-width:1200px;
+    margin:auto;
+    padding:90px 20px;
+}
+
+h2{
+    text-align:center;
+    color:var(--ocean-dark);
+    margin-bottom:40px;
+}
+
+/* OVER */
+
+
+
+.room img{
+    width:100%;
+    border-radius:10px;
+}
+
+.foto-blok {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px; /* ruimte tussen foto en tekst */
+    margin-bottom: 20px;
+}
+
+.foto {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* TROEVEN */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+	
+}
+
+.feature{
+    background:var(--sand);
+    padding:25px;
+    border-radius:10px;
+	
+}
+
+/* GALERIJ */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
+}
+
+.gallery img{
+    width:100%;
+    cursor:pointer;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.gallery img:hover{
+    transform:scale(1.03);
+}
+
+/* LIGHTBOX */
+
+.lightbox{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.9);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.lightbox img{
+    max-width:90%;
+    max-height:90%;
+}
+
+.prev,.next{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:60px;font-weight:bold;cursor:pointer;padding:20px;user-select:none}
+.prev{left:20px}.next{right:20px}
+
+
+/* PRIJZEN */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:var(--ocean);
+    color:white;
+}
+
+th,td{
+    padding:15px;
+    border:1px solid #ddd;
+}
+
+/* CONTACT */
+
+form{
+    max-width:700px;
+    margin:auto;
+    display:grid;
+    gap:15px;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+button{
+    background:var(--ocean);
+    color:white;
+    border:none;
+    padding:14px;
+    cursor:pointer;
+}
+
+/* COOKIE BANNER */
+
+.cookie-banner{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    right:20px;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 20px rgba(0,0,0,.2);
+    z-index:999;
+}
+
+.cookie-banner button{
+    margin-top:10px;
+}
+
+/* FOOTER */
+
+footer{
+    background:var(--ocean-dark);
+    color:white;
+    text-align:center;
+    padding:40px;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:2.4rem;
+}
+
+.room{
+    grid-template-columns:1fr;
+}
+
+}
+/* POPUP */
+
+.popup{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    z-index:10000;
+    justify-content:center;
+    align-items:center;
+}
+
+.popup-content{
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    max-width:600px;
+    width:90%;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+.close-popup{
+    float:right;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.popup button{
+    margin-top:20px;
+    padding:10px 20px;
+    background:#0b6ea8;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+.popup-image{
+    width:80%;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+.popup-button{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 25px;
+    background:#0b6ea8;
+    color:white;
+    text-decoration:none;
+    border-radius:6px;
+    font-weight:bold;
+}
+
+.popup-button:hover{
+    background:#084c74;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<nav>
+<ul>
+<li><a href="#over">Over</a></li>
+<li><a href="#troeven">Troeven</a></li>
+<li><a href="#galerij">Foto's</a></li>
+<li><a href="#prijzen">Prijzen</a></li>
+<li><a href="#beschikbaarheid">Beschikbaarheid</a></li>
+<li><a href="#boeken">Boeken</a></li>
+<li><a href="#interesses">Omgeving</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="hero">
+<div class="hero-content">
+<h1>Zonnig appartement met zeezicht te Koksijde</h1>
+
+<p>
+20 meter van het strand • 2 slaapkamers • tot 6 personen • honden welkom
+</p>
+
+<a class="btn" href="#over">Ontdek het verblijf</a> <a class="btn" href="#boeken">Boek nu</a>
+
+</div>
+
+</section>
+
+<section id="troeven">
+<h2>Troeven</h2>
+
+<div class="features">
+
+<div class="feature">
+<h3>🏖 20 meter van het strand</h3>
+</div>
+
+<div class="feature">
+<h3>🌊 zijdelings zeezicht</h3>
+</div>
+
+<div class="feature">
+<h3>🛒 400 meter van de winkelstraat</h3>
+</div>
+
+<div class="feature">
+<h3>🚋 200 meter van de tramhalte</h3>
+</div>
+
+<div class="feature">
+<h3>🐶 honden welkom</h3>
+</div>
+
+<div class="feature">
+<h3>🛜 gratis wifi</h3>
+</div>
+
+<div class="feature">
+<h3>🚲 gratis fietsenstalling</h3>
+</div>
+
+<div class="feature">
+<h3>💶 all-in prijs (energie, water, eindschoonmaak)</h3>
+</div>
+
+<div class="feature">
+<h3>🍽️ keuken-startpakket inbegrepen (vaatdoek, handdoek, vaatwas- tabletten, senseo-pads)</h3>
+</div>
+
+<div class="feature">
+<h3>🧴️ badkamer-startpakket inbegrepen (douchegel, shampoo, handzeep, toiletrol)</h3>
+</div>
+
+<div class="feature">
+<h3>🚗️ mogelijkheid tot bijhuren garage op 300m)</h3>
+</div>
+
+<div class="feature">
+<h3>😴️ mogelijkheid tot bijhuren lakenpakket (hoeslaken, kussenovertrek, donsovertrek)</h3>
+</div>
+
+</div>
+</section>
+
+<section id="over">
+<h2>Over het verblijf
+(klik op de foto voor een vergroting)</h2>
+
+<h2>Appartement Plimouth bevindt zich op het verhoogde gelijkvloers (2x 2 tredes) 
+in de Van Haelenstraat in Koksijde-Bad,
+op slechts 20 meter van het strand en 200m van de tramhalte.
+Het appartement biedt comfort,
+rust en een ideale ligging voor een vakantie aan zee.</h2>
+
+
+<div class="room">
+
+<div>
+<h3>Woonkamer</h3>
+<p>Vanuit de inkom kom je in de comfortabele, lichtrijke woonkamer met open keuken.
+Vanop de hoekbank/slaapbank kan comfortabel TV met Google-TV (telenet, netflix, streamz,...) worden gekeken, al dan niet met eigen inloggegevens, 
+of rustig een boek lezen met zicht op zee
+Er is een ruime eettafel voor zes personen. Voor de kindjes is een kinderstoel ter beschikking.
+De woonkamer kan vlot verlucht worden via de draai-kip ramen, zowel in de winter als in de zomer is er een aangenaam binnenklimaat</p>
+</div>
+</div>
+
+<a href="images/woonkamer.jpg" target="_blank">
+    <img src="images/woonkamer.jpg" class="foto" alt="woonkamer">
+</a>
+
+<div class="room">
+
+<div>
+<h3>Keuken</h3>
+<p>De open keuken heeft alle comfort om een lekkere koffie of thee te zetten alsook een eigen maaltijd te bereiden of op te warmen.
+Volgende toestellen zijn aanwezig : hallogeenkookplaat, micro-combioven, grote koelkast met vriesvak, vaatwas, broodrooster, koffiezet, Senseo, waterkoker, toaster
+en een volledig bestek en borden voor meer dan 6 personen. Een startpakket met keukenhanddoek, vaatdoek, enkele vaatwastabletten en enkele senseo-pads worden voorzien bij aankomst</p>
+</div>
+</div>
+
+<a href="images/keuken.jpg" target="_blank">
+    <img src="images/keuken.jpg" class="foto" alt="keuken">
+</a>
+
+<div class="room">
+
+<div>
+<h3>Slaapkamers</h3>
+<p>In de ruime masterbedroom staat een 2 persoonsbed van 160cm breed met op beide matrassen een beschermhoes. Er zijn voldoende kussens en donsdekens aanwezig.
+Kussenslopen, bedovertrek en donsovertrek zelf mee te brengen (of mits een kleine toeslag bij te vragen)
+De kinderkamer is voorzien van een stapelbed met voldoende kussens en donsdekens. Ook hier zijn matrasbeschermers aanwezig, maar kussenslopen en bedovertrek zijn zelf te 
+voorzien (of mits een kleine toeslag bij te vragen).Iedere slaapkamer heeft een buitenraam (draai-kip) om te kunnen verluchten. In de woonkamer staat een uittrekbaar 
+zetelbed voor 2 personen waardoor het appartement geschikt is voor een verblijf tot 6 personen</p>
+</div>
+</div>
+
+<a href="images/Slaapkamer.jpg" target="_blank">
+    <img src="images/Slaapkamer.jpg" class="foto" alt="slaapkamer">
+</a>
+
+<div class="room">
+
+<div>
+<h3>Badkamer</h3>
+<p>De badkamer heeft alle comfort voor de dagelijkse hygiëne tijdens je verblijf. In de badkamer bevindt zich het toilet, een ruime douche met thermostatische kraan en een 
+was tafel met grote spiegel. 
+Er is voldoende verlichting en verluchting. Een startpakket met douchegel, shampoo handzeep is voorzien, 
+persoonlijke handdoeken en andere spullen zijn zelf mee te brengen, een haardroger is ter plaatse</p>
+</div>
+</div>
+
+<a href="images/Badkamer.jpg" target="_blank">
+    <img src="images/Badkamer.jpg" class="foto" alt="badkamer">
+</a>
+
+
+</section>
+
+<section id="galerij">
+<h2>Fotogalerij</h2>
+
+<div class="gallery">
+<img src="images/foto1.jpg" onclick="openLightbox(this.src)">
+<img src="images/foto2.jpg" onclick="openLightbox(this.src)">
+<img src="images/foto3.jpg" onclick="openLightbox(this.src)">
+<img src="images/foto4.jpg" onclick="openLightbox(this.src)">
+<img src="images/foto5.jpg" onclick="openLightbox(this.src)">
+<img src="images/foto6.jpg" onclick="openLightbox(this.src)">
+<img src="images/foto7.jpg" onclick="openLightbox(this.src)">
+<img src="images/foto8.jpg" onclick="openLightbox(this.src)">
+<img src="images/foto9.jpg" onclick="openLightbox(this.src)">
+<img src="images/foto10.jpg" onclick="openLightbox(this.src)">
+<img src="images/foto11.jpg" onclick="openLightbox(this.src)">
+<img src="images/foto12.jpg" onclick="openLightbox(this.src)">
+<img src="images/foto13.jpg" onclick="openLightbox(this.src)">
+<img src="images/foto14.jpg" onclick="openLightbox(this.src)">
+<img src="images/foto15.jpg" onclick="openLightbox(this.src)">
+<img src="images/foto16.jpg" onclick="openLightbox(this.src)">
+<img src="images/foto17.jpg" onclick="openLightbox(this.src)">
+<img src="images/foto18.jpg" onclick="openLightbox(this.src)">
+<img src="images/foto19.jpg" onclick="openLightbox(this.src)">
+<img src="images/foto21.jpg" onclick="openLightbox(this.src)">
+<img src="images/foto22.jpg" onclick="openLightbox(this.src)">
+<img src="images/foto20.png" onclick="openLightbox(this.src)">
+</div>
+
+</section>
+
+<section id="prijzen">
+<h2>Prijzen</h2>
+
+<table>
+<tr>
+<th>Periode</th>
+<th>Prijs (buiten vakantieperiode)</th>
+<th>Prijs (tijdens vakantieperiode)</th>
+<th>Prijs (Kerstvakantie)</th>
+<th>Opmerkingen</th>
+
+</tr>
+
+<tr>
+<td>Weekend (min 2 nachten)</td>
+<td>€ 290</td>
+<td>€ 350</td>
+<td>€ 370</td>
+<td>Huur lakens = €20/2 pers-bed * €15/1 pers-bed</td>
+
+</tr>
+
+<tr>
+<td>Extra nacht (midweek)</td>
+<td>€ 100</td>
+<td>€ 135</td>
+<td>€ 140</td>
+<td>per extra nacht</td>
+
+</tr>
+
+<tr>
+<td>Per week</td>
+<td>€ 480</td>
+<td>€ 620</td>
+<td>€ 680</td>
+<td>7 nachten</td>
+
+</tr>
+
+<tr>
+<td>Per maand</td>
+<td>€ 1360</td>
+<td>€ 1950</td>
+<td>€ 1950</td>
+<td>Verbruik niet inbegrepen (wordt apart verekend a.d.h.v. de tellers)</td>
+
+</tr>
+<H2>
+OPGELET : Tijdens de maanden juli en augustus enkel verhuur via het kantoor Ultimmo - www.ultimmo.be / ref 29
+</H2>
+
+<H3> in de huurprijs is normaal verbruik van energie en water inbegrepen, uitgezonderd bij maandverhuur</H3>
+
+</table>
+
+</section>
+
+<section id="beschikbaarheid">
+<h2>Beschikbaarheid</h2>
+
+<iframe src="https://calendar.google.com/calendar/embed?height=500&wkst=1&ctz=Europe%2FBrussels&showPrint=0&showTabs=0&src=cGxpbW91dGhrb2tzaWpkZUBnbWFpbC5jb20&src=Y2JhMzM1YTUyYTVkYzg0ZjEwNGE0ODNmZWRkYTI2OTcwZTdlODgxMmM1MjEyZjFkNzI2OTVjNDhiMDkzNmQ3N0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=bmwuYmUjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23f4511e&color=%230b8043&color=%234285f4" 
+style="border:solid 1px #777" width="1200" height="500" frameborder="0" scrolling="no"></iframe>
+
+
+
+</section>
+
+<section id="boeken">
+
+<h2>Boeken</h2>
+
+<p style="text-align:center;">
+plimouthkoksijde@gmail.com
+</p>
+
+<form action="https://formsubmit.co/plimouthkoksijde@gmail.com" method="POST">
+
+<input type="text" placeholder="Naam" required>
+
+<input type="email" placeholder="E-mail" required>
+
+<textarea rows="6" placeholder="Uw bericht"></textarea>
+
+<button type="submit">
+Versturen
+</button>
+
+</form>
+
+</section>
+
+<section id="interesses">
+<h2>Interesses in de omgeving</h2>
+
+<ul>
+<li>Restaurants : In Koksijde en omstreken zijn er heel wat eetgelegenheden voor elk wat wils. voor meer info klik op de
+<a href="https://www.dekust.be/proeven/restaurants?location=Koksijde" target="_blank">link</a></li>
+<li>Kusttram : Zorgeloos de kust verkennen doe je met de kusttram. Alle info, prijzen en rijstijden vind je via deze
+<a href="https://www.delijn.be/nl/lijnen/5500/?richtingCode=0" target="_blank">link</a></li>
+<li>Musea : weet je dat Koksijde beschikt over 8 musea, allemaal met hun eigen interesseveld. voor meer info klik op de
+<a href="https://www.koksijde.be/nl/visit-koksijde/zien-en-doen/kunst-cultuur-erfgoed/musea" target="_blank">link</a></li>
+<li>Koksijde : in Koksijde en deelgemeentes is heel wat te beleven, van leuke wandelingen aan het strand of in de duinen, of fietsen aan de kust of het hinterland. 
+Meer info vind je in toerisme-kantoor in de zeelaan 303 of via deze
+<a href="https://www.koksijde.be/home-visit-koksijde" target="_blank">link</a></li>
+<li>Nieuwpoort : Ook in de buurgemeentes is het leuk vertoeven, shoppen, wandelen langs de jachthaven, lekker dineren. Alle info vind je via deze
+<a href="https://www.nieuwpoort.be/" target="_blank">link</a> </li>
+<li>De Panne : ook De Panne heeft heel wat te bieden voor een leuke uitstap, wandelen in de duinen of net over de grens naar Frankrijk, 
+of breng je liever een bezoekje aan Plosaland met het Plopsatheater, alle info via deze 
+<a href="https://www.depanne.be/" target="_blank">link</a> </li>
+
+</ul>
+
+</section>
+
+<footer>
+
+<p>© 2026 plimouth-koksijde </p>
+<p>logiesdecreet-nummer 217404<p>
+
+<a href="privacy.html" target="_blank"
+style="color: #ffffff;">Privacybeleid</a>
+<a href="Huisregels.pdf" target="_blank"
+style="color: #ffffff;"> - Algemene voorwaarden</a>
+<p>
+
+</p>
+
+</footer>
+
+<div class="lightbox" id="lightbox">
+<span class="prev" onclick="event.stopPropagation();changePhoto(-1)">&#10094;</span>
+<img id="lightbox-img">
+<span class="next" onclick="event.stopPropagation();changePhoto(1)">&#10095;</span>
+</div>
+
+<div class="cookie-banner" id="cookieBanner">
+<p>
+Deze website gebruikt uitsluitend noodzakelijke cookies.
+</p>
+<button onclick="acceptCookies()">
+Accepteren
+</button>
+</div>
+
+<div id="popup" class="popup">
+
+    <div class="popup-content">
+
+        <span class="close-popup" onclick="closePopup()">&times;</span>
+
+        <img src="images/hero.jpg" class="popup-image">
+
+        <h2>🌞 Genieten aan zee</h2>
+
+        <p>
+            <strong>Vanaf 2027 ook rechtstreeks te boeken</strong><br><br>
+            Na verschillende jaren verhuurd te hebben via kantoor
+			kan je ons appartement nu rechtstreeks bij de eigenaars boeken. 
+			Klik verder voor meer info of klik direct om de beschikbaarheid te zien
+        </p>
+
+        <a href="#beschikbaarheid"
+   class="popup-button"
+   onclick="closePopup();">
+    Bekijk beschikbaarheid
+</a>
+
+    </div>
+
+</div>
+</div>
+
+
+<script>
+const galleryImages=[...document.querySelectorAll('.gallery img')];
+let currentIndex=0;
+function openLightbox(src){currentIndex=galleryImages.findIndex(i=>i.src===src);if(currentIndex<0)currentIndex=0;lightbox.style.display='flex';document.getElementById('lightbox-img').src=src;}
+function closeLightbox(){lightbox.style.display='none';}
+function changePhoto(step){currentIndex=(currentIndex+step+galleryImages.length)%galleryImages.length;document.getElementById('lightbox-img').src=galleryImages[currentIndex].src;}
+function acceptCookies(){localStorage.setItem('cookiesAccepted','yes');cookieBanner.style.display='none';}
+if(localStorage.getItem('cookiesAccepted'))cookieBanner.style.display='none';
+const lightbox=document.getElementById('lightbox');
+lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox();});
+document.addEventListener('keydown',e=>{if(lightbox.style.display!=='flex')return;if(e.key==='ArrowRight')changePhoto(1);if(e.key==='ArrowLeft')changePhoto(-1);if(e.key==='Escape')closeLightbox();});
+
+window.addEventListener("load", function () {
+    document.getElementById("popup").style.display = "flex";
+});
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+window.onclick = function(event) {
+    const popup = document.getElementById("popup");
+
+    if (event.target === popup) {
+        closePopup();
+    }
+}
+</script>
+
+</body>
+</html>
