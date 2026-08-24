@@ -306,7 +306,7 @@ footer{
     background:white;
     padding:30px;
     border-radius:12px;
-    max-width:600px;
+    max-width:400px;
     width:90%;
     text-align:center;
     box-shadow:0 10px 30px rgba(0,0,0,.3);
@@ -328,7 +328,7 @@ footer{
     cursor:pointer;
 }
 .popup-image{
-    width:80%;
+    width:60%;
     border-radius:10px;
     margin-bottom:20px;
 }
@@ -353,7 +353,14 @@ footer{
 </head>
 
 <body>
-<div class="gtranslate_wrapper"></div>	
+/* Verplaatst de zwevende GTranslate widget naar rechtsonder */
+<div class="gtranslate_wrapper", #gt_float_wrapper {
+    left: auto !important;
+    right: 20px !important;
+    bottom: 20px !important;
+}
+</div>
+	
 <header>
 <nav>
 <ul>
